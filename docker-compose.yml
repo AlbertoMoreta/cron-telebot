@@ -3,22 +3,26 @@ version: "3.1"
 services:
   cron-telebot:
     build: .
-    command: python main.py
-    restart: always
-    env_file: .env
-    depends_on:
-      - wait-dependencies
-  flask:
-    build: .
-    links:
-      - mongo
-    command: python api.py
+    command: gunicorn main:app
     restart: always
     env_file: .env
     depends_on:
       - wait-dependencies
     ports:
-      - "5000:5000"
+      - "8443:8000"
+    links:
+      - mongo
+#  flask:
+#    build: .
+#    links:
+#      - mongo
+#    command: python api.py
+#    restart: always
+#    env_file: .env
+#    depends_on:
+#      - wait-dependencies
+#    ports:
+#      - "5000:5000"
   mongo:
     image: mongo
     restart: always
