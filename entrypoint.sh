@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ ! -z ${MONGO_CRON_TELEBOT_PASSWORD_FILE+x} ]; then
+  MONGO_CRON_TELEBOT_PASSWORD=$(cat ${MONGO_CRON_TELEBOT_PASSWORD_FILE})
+fi
+
+if [ ! -z ${TOKEN_FILE+x} ]; then
+  TOKEN=$(cat ${TOKEN_FILE})
+  export TOKEN
+fi
+
+export MONGO=mongodb://${MONGO_CRON_TELEBOT_USERNAME}:${MONGO_CRON_TELEBOT_PASSWORD}@mongo:27017/${MONGO_INITDB_DATABASE}
+
+python main.py
+

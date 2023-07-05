@@ -8,7 +8,7 @@ load_dotenv()
 ENV = getenv("ENV")
 TZ_OFFSET = 8.0  # (UTC+08:00)
 JOB_LIMIT_PER_PERSON = 10
-BOT_NAME = "@cron_telebot"
+BOT_NAME = "@xrebellion_cron"
 
 
 """ Telegram config """
@@ -18,7 +18,7 @@ BOTHOST = getenv("BOTHOST")  # only required in prod environment
 
 """ DB config """
 MONGODB_CONNECTION_STRING = getenv("MONGODB_CONNECTION_STRING")
-MONGODB_DB = "rm_bot"
+MONGODB_DB = "cronTelebotDB"
 MONGODB_JOB_DATA_COLLECTION = "job_data"
 MONGODB_CHAT_DATA_COLLECTION = "chat_data"
 MONGODB_USER_DATA_COLLECTION = "user_data"

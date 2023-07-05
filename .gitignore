@@ -13,3 +13,4 @@ bot.session
 keys.json
 photo-*
 .env
+.idea
