@@ -10,8 +10,6 @@ services:
     env_file: .env
     depends_on:
       - wait-dependencies
-    ports:
-      - "8000:8000"
   flask:
     build:
       context: .
