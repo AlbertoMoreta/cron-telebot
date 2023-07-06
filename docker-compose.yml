@@ -2,14 +2,20 @@ version: "3.1"
 
 services:
   cron-telebot:
-    build: .
-    command: gunicorn main:app
+    build:
+      context: .
+      dockerfile: Dockerfile.main
+    command: python main.py
     restart: always
     env_file: .env
     depends_on:
       - wait-dependencies
+    ports:
+      - "8000:8000"
   flask:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.api
     links:
       - mongo
     command: python api.py
@@ -18,7 +24,7 @@ services:
     depends_on:
       - wait-dependencies
     ports:
-      - "8443:5000"
+      - "5000:5000"
   mongo:
     image: mongo
     restart: always

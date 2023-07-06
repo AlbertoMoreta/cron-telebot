@@ -1,0 +1,21 @@
+FROM python:3.9-slim-buster
+
+WORKDIR /app
+
+RUN apt-get update -y && \
+    apt-get install -y curl && \
+    apt-get install -y cron
+
+COPY ../requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+COPY cron_ping /etc/cron.d/cron_ping
+RUN chmod 0644 /etc/cron.d/cron_ping
+RUN crontab /etc/cron.d/cron_ping
+
+RUN touch /var/log/cron.log
+CMD cron && tail -f /var/log/cron.log
+
