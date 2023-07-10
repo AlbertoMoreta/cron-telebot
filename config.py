@@ -8,7 +8,7 @@ load_dotenv()
 ENV = getenv("ENV")
 TZ_OFFSET = 8.0  # (UTC+08:00)
 JOB_LIMIT_PER_PERSON = 10
-BOT_NAME = "@xrebellionreminder_bot"
+BOT_NAME = "@xralcala_recordatorios_bot"
 ADMIN_IDS = getenv("ADMIN_IDS")
 
 
